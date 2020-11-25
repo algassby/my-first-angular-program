@@ -22,6 +22,7 @@ export class AuthComponent implements OnInit {
       ()=>{
         console.log('connexion reussie');
         this.authStatus = this.authService.isAuth;
+        this.router.navigate(['appareils']);
       }
     )
   }
