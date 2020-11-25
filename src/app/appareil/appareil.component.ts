@@ -17,10 +17,18 @@ export class AppareilComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+/** status */
   getStatus() {
     return this.appareilStatus;
   }
+/** couleur */
+  getColor() : String  | void{
+    if(this.appareilStatus === 'allumé') {
+      return 'green';
+    } else if(this.appareilStatus === 'éteint') {
+      return 'red';
+    }
+}
 
 
 }
