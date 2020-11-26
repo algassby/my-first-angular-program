@@ -8,7 +8,7 @@ import { AppareilService } from '../services/appareil.service';
 })
 export class ApparareilViewComponent implements OnInit {
 
-  lastUpdate = new Promise((resolve, reject) => {
+   lastUpdate : any = new Promise((resolve, reject) => {
     const date = new Date();
     setTimeout(
       () => {
