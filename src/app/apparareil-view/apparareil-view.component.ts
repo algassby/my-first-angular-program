@@ -51,4 +51,14 @@ onEteindre(): null |void {
     return null;
   }
 }
+
+//sauvergarder les appareils dans la database firebase
+  onSave(){
+    this.appareilService.saveAppareilsToServer();
+  }
+// lire les appareils enregistré dans le serveur
+  onFetch(){
+    this.appareilService.getAppareilsToServer();
+  }
+
 }

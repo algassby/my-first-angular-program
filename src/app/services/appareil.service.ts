@@ -1,26 +1,17 @@
 import { ArrayType } from '@angular/compiler';
 import { Subject } from 'rxjs';
 import { SingleAppareilComponent } from '../single-appareil/single-appareil.component';
+import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class AppareilService{
+
   appareilSubject = new Subject<any[]>()
- private   appareils = [
-        {
-          id:1,
-          name: 'Machine à laver',
-          status: 'éteint'
-        },
-        {
-          id:2,
-          name: 'Frigo',
-          status: 'allumé'
-        },
-        {
-          id:3,
-          name: 'Ordinateur',
-          status: 'éteint'
-        }
-      ];
+ private   appareils = [];
+      constructor(private httpClient:HttpClient){
+
+      }
       //changement des appareils , emettre une copie avec slice()
       emitAppareilSubject(){
         this.appareilSubject.next(this.appareils.slice());
@@ -73,4 +64,35 @@ export class AppareilService{
         this.emitAppareilSubject();
 
       }
+//recuperer les les objets enregistré dans le serveur
+      saveAppareilsToServer(){
+        this.httpClient
+        //post, put il est préfable de mettre put pour écraser le neoud enregistré
+        .put('https://http-client-demo-d142f.firebaseio.com/appareils.json', this.appareils)
+        .subscribe(
+          ()=>{
+            console.log('enregistrement terminé');
+          },
+          (error)=>{
+              console.log('Erreur de sauvegarde!'+error);
+          }
+        )
+
+      }
+      getAppareilsToServer(){
+        this.httpClient
+        .get<any>('https://http-client-demo-d142f.firebaseio.com/appareils.json')
+        .subscribe(
+          (response)=>{
+            this.appareils = response;
+            this.emitAppareilSubject();
+          },
+          (error)=>{
+            console.log('erreur de chatgement: '+error);
+          }
+        );
+
+      }
+
+      
 }
