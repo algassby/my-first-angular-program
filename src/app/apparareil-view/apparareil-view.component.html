@@ -8,13 +8,13 @@
             [appareilStatus]="appareil.status"
             [id]="appareil.id"></app-appareil>
           </ul>
-          <button class="btn btn-success"
+          <button class="btn btn-success m-auto"
                   [disabled]="!isAuth"
                   (click)="onAllumer()">Tout allumer</button>
-          <button class="btn btn-danger"
+          <button class="btn btn-danger mr-auto ml-auto"
                   [disabled]="!isAuth"
                   (click)="onEteindre()">Tout éteindre</button>
-          <button class="btn btn-primary" (click)="onSave()">Enregister</button>
-          <button class="btn btn-primary" (click)="onFetch()">Charger</button>
+          <button class="btn btn-primary m-auto" (click)="onSave()">Enregister</button>
+          <button class="btn btn-primary m-auto" (click)="onFetch()">Charger</button>
           
     </div>
