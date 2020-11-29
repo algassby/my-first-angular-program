@@ -16,6 +16,7 @@ import { AuthGard } from './services/auth-guard.service';
 import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './services/user.service';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 const appRoutes: Routes = [
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   {path:'edit', canActivate:[AuthGard], component: EditAppareilComponent},
   {path:'auth', component:AuthComponent},
   {path:'users',  component:UserListComponent},
+  {path:"new-user", component:NewUserComponent},
   {path:'', component:ApparareilViewComponent},
   {path:'not-found', component:FourOhFourComponent},
   {path:'**', redirectTo:'not-found'}
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     SingleAppareilComponent,
     FourOhFourComponent,
     EditAppareilComponent,
-    UserListComponent
+    UserListComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
